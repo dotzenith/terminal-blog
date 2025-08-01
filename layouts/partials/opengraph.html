@@ -44,7 +44,7 @@
   {{- end }}
 {{- end }}
 {{- $size := or .Params.og_size "50" }}
-{{- $ogImageURL := printf "https://og.danshu.co/generate?size=%s&title=%s&website=blog.danshu.xyz&date=%s" $size $title $date }}
+{{- $ogImageURL := printf "https://og.danshu.co/generate?size=%s&title=%s&website=blog.danshu.co&date=%s" $size $title $date }}
 <meta property="og:image" content="{{ $ogImageURL }}">
 
 {{- with .Params.audio }}
