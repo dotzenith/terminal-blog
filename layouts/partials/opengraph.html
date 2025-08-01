@@ -43,7 +43,13 @@
     {{- $date = .Format "2006-01-02" | urlquery }}
   {{- end }}
 {{- end }}
-{{- $ogImageURL := printf "https://og.danshu.co/generate?size=30&title=%s&website=blog.danshu.co&date=%s" $title $date }}
+{{- $size := "30" }}
+{{- if or (eq .Kind "home") (eq .Section "about") }}
+  {{- $size = "50" }}
+{{- else }}
+  {{- $size = or .Params.og_size "30" }}
+{{- end }}
+{{- $ogImageURL := printf "https://og.danshu.co/generate?size=%s&title=%s&website=blog.danshu.xyz&date=%s" $size $title $date }}
 <meta property="og:image" content="{{ $ogImageURL }}">
 
 {{- with .Params.audio }}
