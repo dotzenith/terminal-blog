@@ -43,7 +43,7 @@
     {{- $date = .Format "2006-01-02" | urlquery }}
   {{- end }}
 {{- end }}
-{{- $ogImageURL := printf "https://og.danshu.co/generate?size=30&title=%s&website=blog.danshu.xyz&date=%s" $title $date }}
+{{- $ogImageURL := printf "https://og.danshu.co/generate?size=30&title=%s&website=blog.danshu.co&date=%s" $title $date }}
 <meta property="og:image" content="{{ $ogImageURL }}">
 
 {{- with .Params.audio }}
