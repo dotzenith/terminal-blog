@@ -42,10 +42,8 @@
 
     {{- if or .Params.math .Site.Params.math }}{{ partial "helpers/katex.html" . -}}{{- end -}}
 
-    {{/* Google analytics script. See hugo.toml to enable/disable this. */}}
-    {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-    {{ template "_internal/google_analytics.html" . }}
-    {{- end -}}
+    {{/* We don't use google analytics, so umami */}}
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="afe14649-c5af-44f3-860c-dec3768e6c8a"></script>
 
     {{/* Extend head with user supplied partial */}}
     {{ if templates.Exists "partials/custom-head.html" }}
