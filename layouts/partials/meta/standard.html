@@ -31,20 +31,17 @@
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" />
 {{ end }}
 
-{{/*  Define empty variable image  */}}
-{{- $image := "" -}}
+{{- /* Generate dynamic OpenGraph image */ -}}
+{{- $title := or .Title site.Title site.Params.title | plainify | urlquery }}
+{{- $date := "" }}
+{{- if .IsPage }}
+  {{- with .PublishDate }}
+    {{- $date = .Format "2006-01-02" | urlquery }}
+  {{- end }}
+{{- end }}
+{{- $size := or .Params.og_size "50" }}
+{{- $ogImageURL := printf "https://og.danshu.co/generate?size=%s&title=%s&website=blog.danshu.co&date=%s" $size $title $date }}
 
-{{/*  If image is defined in front matter, use it  */}}
-{{- if .Params.image -}}
-  {{- $image = .Params.image -}}
-{{/*  If image is not defined in front matter, use site ogimage  */}}
-{{- else if .Site.Params.ogimage -}}
-  {{- $image = .Site.Params.ogimage -}}
-{{- end -}}
-
-{{- if $image -}}
-<meta itemprop="image" content="{{ $image | absURL }}" />
-<meta property="og:image" content="{{ $image | absURL }}" />
-<meta name="twitter:image" content="{{ $image | absURL }}" />
-<meta name="twitter:image:src" content="{{ $image | absURL }}" />
-{{- end -}}
+<meta itemprop="image" content="{{ $ogImageURL }}" />
+<meta name="twitter:image" content="{{ $ogImageURL }}" />
+<meta name="twitter:image:src" content="{{ $ogImageURL }}" />
