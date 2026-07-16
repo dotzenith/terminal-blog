@@ -20,6 +20,7 @@
         {{ partial "promptline.html" (dict "ctx" . "cmd" "cat" "arg" "intro.md" "path" "~") }}
         <div class="wrapper">
             {{ partial "bio" . }}
+            <hr class="transcript-separator">
             {{ partial "promptline.html" (dict "ctx" . "cmd" "ls" "arg" "posts/" "path" "~") }}
             <main aria-label="Content">
                 {{ $pagesToShow := where .Site.RegularPages "Type" "in" site.Params.mainSections }}

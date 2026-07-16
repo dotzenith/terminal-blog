@@ -217,6 +217,12 @@ body {
 }
 
 // ── Post rows: terminal output without structural divider lines ─────────────
+.transcript-separator {
+  margin: 0.9rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--hba-line);
+}
+
 .frame .post-item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
