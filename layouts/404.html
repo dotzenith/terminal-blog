@@ -1,12 +1,10 @@
-{{ define "title"}}
-    404 |  NOT FOUND
-{{ end }}
-
-{{ define "main"}}
+{{ define "title" }}404 | {{ .Site.Title }}{{ end }}
+{{ define "main" }}
 <div class="wrapper">
-    <main class="main-404" aria-label="Content">
-        <h1>{{ T "errors.404" }}</h1>
-        <p>{{ T "errors.404_description" }}</p>
+    <main class="not-found" aria-label="Page not found">
+        <h1>404: command not found</h1>
+        <p>The requested path does not exist.</p>
+        <p><a href="{{ .Site.Home.RelPermalink }}">cd ~</a></p>
     </main>
 </div>
 {{ end }}

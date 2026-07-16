@@ -1,63 +1,33 @@
 (() => {
     "use strict";
-    const LS_THEME_KEY = "theme";
-    const THEMES = {
-        LIGHT: "light",
-        DARK: "dark",
-        AUTO: "auto",
-    };
 
+    const storageKey = "theme";
+    const root = document.documentElement;
     const body = document.body;
-    const config = body.getAttribute("data-theme");
 
-    const getThemeState = () => {
-        const lsState = localStorage.getItem(LS_THEME_KEY);
-        if (lsState) return lsState;
+    const preferredTheme = () => {
+        const saved = localStorage.getItem(storageKey);
+        if (saved === "light" || saved === "dark") return saved;
 
-        let state;
-        switch (config) {
-            case THEMES.DARK:
-                state = THEMES.DARK;
-                break;
-            case THEMES.LIGHT:
-                state = THEMES.LIGHT;
-                break;
-            case THEMES.AUTO:
-            default:
-                state = window.matchMedia("(prefers-color-scheme: dark)")
-                    .matches
-                    ? THEMES.DARK
-                    : THEMES.LIGHT;
-                break;
-        }
-        return state;
+        const configured = body.dataset.theme;
+        if (configured === "light" || configured === "dark") return configured;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     };
 
-    const initTheme = (state) => {
-        if (state === THEMES.DARK) {
-            document.documentElement.classList.add(THEMES.DARK);
-            document.documentElement.classList.remove(THEMES.LIGHT);
-        } else if (state === THEMES.LIGHT) {
-            document.documentElement.classList.remove(THEMES.DARK);
-            document.documentElement.classList.add(THEMES.LIGHT);
-        }
+    const applyTheme = (theme) => {
+        root.classList.toggle("dark", theme === "dark");
+        root.classList.toggle("light", theme === "light");
+        root.style.colorScheme = theme;
     };
 
-    initTheme(getThemeState());
+    applyTheme(preferredTheme());
     requestAnimationFrame(() => body.classList.remove("notransition"));
 
-    const toggleTheme = () => {
-        const state = getThemeState();
-        if (state === THEMES.DARK) {
-            localStorage.setItem(LS_THEME_KEY, THEMES.LIGHT);
-            initTheme(THEMES.LIGHT);
-        } else if (state === THEMES.LIGHT) {
-            localStorage.setItem(LS_THEME_KEY, THEMES.DARK);
-            initTheme(THEMES.DARK);
-        }
-    };
-
     window.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("mode")?.addEventListener("click", toggleTheme);
+        document.getElementById("mode")?.addEventListener("click", () => {
+            const next = root.classList.contains("dark") ? "light" : "dark";
+            localStorage.setItem(storageKey, next);
+            applyTheme(next);
+        });
     });
 })();

@@ -1,0 +1,141 @@
+.frame {
+  max-width: $frame-width;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  background: var(--background);
+}
+
+.navbar {
+  border-bottom: 1px solid var(--line);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding: 0.75rem $frame-padding;
+}
+
+.site-brand {
+  min-width: 0;
+  color: var(--text);
+  font-family: $mono-family;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#mode {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+#mode:hover {
+  opacity: 1;
+}
+
+.colorbar {
+  display: inline-flex;
+  gap: 1px;
+}
+
+.colorbar > i {
+  width: 11px;
+  height: 7px;
+}
+
+.sw-red { background: var(--sw-red); }
+.sw-peach { background: var(--sw-peach); }
+.sw-yellow { background: var(--sw-yellow); }
+.sw-green { background: var(--sw-green); }
+.sw-teal { background: var(--sw-teal); }
+.sw-sapphire { background: var(--sw-sapphire); }
+.sw-blue { background: var(--sw-blue); }
+.sw-mauve { background: var(--sw-mauve); }
+
+.termline {
+  padding: 0.55rem $frame-padding 0.15rem;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font: 0.95rem/1.5 $mono-family;
+}
+
+.tl-user { color: var(--sw-yellow); }
+.tl-host { color: var(--sw-blue); }
+.tl-cmd { color: var(--sw-green); font-weight: 700; }
+.tl-arg { color: var(--text); }
+
+.ls-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.5rem;
+  padding: 0.1rem $frame-padding 0.7rem;
+  border-bottom: 1px solid var(--line);
+  font: 0.9rem $mono-family;
+}
+
+.ls-entry {
+  display: inline-block;
+}
+
+.ls-dir {
+  color: var(--sw-blue);
+  text-decoration: none;
+}
+
+.ls-dir::after {
+  color: var(--muted);
+  content: "/";
+}
+
+.ls-dir:hover,
+.ls-dir:focus-visible {
+  color: var(--background);
+  background: var(--accent);
+}
+
+.ls-dir:hover::after,
+.ls-dir:focus-visible::after {
+  color: var(--background);
+}
+
+.ls-dir.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ls-file {
+  color: var(--text);
+}
+
+.wrapper {
+  padding: 0 $frame-padding 1.75rem;
+}
+
+.wrapper .termline {
+  margin-top: 0.55rem;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.footer {
+  padding: 0.85rem $frame-padding;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: $mono-family;
+  text-align: center;
+}
+
+.footer small {
+  font-size: 0.76rem;
+}

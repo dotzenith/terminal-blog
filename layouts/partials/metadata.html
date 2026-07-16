@@ -1,0 +1,43 @@
+{{- $title := .Site.Title -}}
+{{- if not .IsHome }}{{ $title = printf "%s | %s" .Title .Site.Title }}{{ end -}}
+{{- $description := .Description | default .Site.Params.description | plainify -}}
+{{- $social := .Site.Params.socialImage -}}
+{{- $endpoint := $social.endpoint | default "https://og.danshu.co/generate" -}}
+{{- $siteName := $social.site | default (urls.Parse .Site.BaseURL).Host -}}
+{{- $size := .Params.ogSize | default $social.defaultSize | default 50 -}}
+{{- $date := "" -}}
+{{- if and .IsPage (not .Date.IsZero) }}{{ $date = .Date.Format "2006-01-02" }}{{ end -}}
+{{- $image := printf "%s?size=%v&title=%s&website=%s&date=%s" $endpoint $size (.Title | default .Site.Title | urlquery) ($siteName | urlquery) ($date | urlquery) -}}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ .Site.Params.author.name }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ .Title | default .Site.Title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:locale" content="{{ replace (.Site.Language.Locale | default "en-us") "-" "_" }}">
+{{- if and .IsPage (eq .Section "posts") }}
+<meta property="og:type" content="article">
+<meta property="article:section" content="posts">
+<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- $author := dict "@type" "Person" "name" .Site.Params.author.name -}}
+{{- $structuredData := dict
+    "@context" "https://schema.org"
+    "@type" "BlogPosting"
+    "headline" .Title
+    "description" $description
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "image" $image
+    "author" $author
+    "publisher" $author
+-}}
+<script type="application/ld+json">{{ $structuredData | jsonify | safeJS }}</script>
+{{- else }}
+<meta property="og:type" content="website">
+{{- end }}

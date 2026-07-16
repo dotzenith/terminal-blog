@@ -1,23 +1,16 @@
+{{- $defaultColor := .Site.Params.defaultColor | default "auto" -}}
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Locale }}">
-    {{- partial "head.html" . -}}
-    <body data-theme = "{{ .Site.Params.defaultColor }}" class="notransition">
-        {{- partial "scriptsBodyStart.html" . -}}
+<html lang="{{ .Site.Language.Locale | default "en-us" }}"{{ if eq $defaultColor "dark" }} class="dark"{{ else if eq $defaultColor "light" }} class="light"{{ end }}>
+    {{- partial "head.html" . }}
+    <body data-theme="{{ $defaultColor }}" class="notransition">
+        {{- partial "theme-script.html" . }}
         <div class="frame">
-            {{- partial "header.html" . -}}
-            {{- partial "navls.html" . -}}
-            {{- $cmd := "cat" }}{{ $arg := "" }}{{ $ppath := "~" -}}
-            {{- if eq .Kind "section" -}}
-                {{- $cmd = "ls" }}{{ $ppath = printf "~/%s" .Section -}}
-            {{- else if eq .Kind "page" -}}
-                {{- $cmd = "cat" }}{{ $arg = printf "%s.md" (path.Base .RelPermalink) }}{{ $ppath = printf "~/%s" .Section -}}
-            {{- else -}}
-                {{- $cmd = "cat" }}{{ $arg = "404.md" -}}
-            {{- end -}}
-            {{- partial "promptline.html" (dict "ctx" . "cmd" $cmd "arg" $arg "path" $ppath) -}}
-            {{- block "main" . }}{{- end }}
-            {{- partial "footer.html" . -}}
+            {{- partial "header.html" . }}
+            {{- partial "navigation.html" . }}
+            {{- if not .IsHome }}{{ partial "page-prompt.html" . }}{{ end }}
+            {{- block "main" . }}{{ end }}
+            {{- partial "footer.html" . }}
         </div>
-        {{- partial "scriptsBodyEnd.html" . -}}
+        {{- if and .IsPage (eq .Section "posts") }}{{ partial "post-script.html" . }}{{ end }}
     </body>
 </html>

@@ -1,0 +1,12 @@
+{{- $cmd := "cat" -}}
+{{- $arg := "404.md" -}}
+{{- $promptPath := "~" -}}
+{{- if eq .Kind "section" -}}
+    {{- $cmd = "ls" -}}
+    {{- $arg = "" -}}
+    {{- $promptPath = printf "~/%s" .Section -}}
+{{- else if .IsPage -}}
+    {{- $arg = printf "%s.md" (path.Base (strings.TrimSuffix "/" .RelPermalink)) -}}
+    {{- with .Section }}{{ $promptPath = printf "~/%s" . }}{{ end -}}
+{{- end -}}
+{{- partial "prompt.html" (dict "ctx" . "cmd" $cmd "arg" $arg "path" $promptPath) -}}

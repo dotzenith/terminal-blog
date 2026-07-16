@@ -1,11 +1,6 @@
 <footer class="footer">
-    <small class="footer_copyright">
-        © {{ now.Format "2006" }} {{ .Site.Params.author.name }}.
-    </small>
+    <small>© {{ now.Format "2006" }} {{ .Site.Params.author.name }}.</small>
 </footer>
-
-{{- if .Site.Params.goToTop -}}
-<a href="#" title="{{ T "footer.go_to_top" }}" id="totop">
-    {{ partial "svgs/arrowUp.svg" (dict "height" 48 "width" 48) . }}
-</a>
-{{- end -}}
+{{ if and .IsPage (eq .Section "posts") }}
+<a href="#" id="totop" aria-label="Go to top" title="Go to top">↑</a>
+{{ end }}

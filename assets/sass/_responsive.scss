@@ -1,0 +1,42 @@
+@media screen and (max-width: $mobile) {
+  body {
+    padding: 0.75rem;
+    font-size: 17px;
+  }
+
+  .frame {
+    width: calc(100vw - 1.5rem);
+    max-width: calc(100vw - 1.5rem);
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0.7rem $frame-padding;
+  }
+
+  .site-brand {
+    font-size: 0.9rem;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+  }
+
+  .post-item-title {
+    grid-column: 2 / -1;
+  }
+
+  .post-item-meta {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  .page-content pre {
+    margin-right: -$frame-padding;
+    margin-left: -$frame-padding;
+  }
+
+  #totop {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
