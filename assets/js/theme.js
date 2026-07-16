@@ -43,9 +43,9 @@
         }
     };
 
-    // init theme ASAP, then do the rest.
     initTheme(getThemeState());
-    requestAnimationFrame(() => body.classList.remove("notransition"))
+    requestAnimationFrame(() => body.classList.remove("notransition"));
+
     const toggleTheme = () => {
         const state = getThemeState();
         if (state === THEMES.DARK) {
@@ -58,18 +58,6 @@
     };
 
     window.addEventListener("DOMContentLoaded", () => {
-        // Theme switch
-        const lamp = document.getElementById("mode");
-
-        lamp.addEventListener("click", () => toggleTheme());
-
-        // Blur the content when the menu is open
-        const cbox = document.getElementById("menu-trigger");
-
-        cbox.addEventListener("change", function () {
-            const area = document.querySelector(".wrapper");
-            if (this.checked) return area.classList.add("blurry");
-            area.classList.remove("blurry");
-        });
+        document.getElementById("mode")?.addEventListener("click", toggleTheme);
     });
 })();

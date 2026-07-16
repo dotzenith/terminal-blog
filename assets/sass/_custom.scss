@@ -1,0 +1,357 @@
+// Imported last to isolate fork-specific overrides from upstream styles.
+
+$frame-pad-x: 1.25rem;
+
+// Runtime tokens keep component rules independent of the active color mode.
+@mixin fork-dark-tokens {
+  --hba-accent: #{$dark-text-link-blue};
+  --hba-bg:     #{$dark-black};
+  --hba-line:   #{$dark-light};
+  --hba-text:   #{$dark-text-base-color};
+  --hba-muted:  #868b98;
+
+  --sw-red: #f38ba8;  --sw-peach: #fab387; --sw-yellow: #f9e2af; --sw-green: #a6e3a1;
+  --sw-teal: #94e2d5; --sw-sapphire: #74c7ec; --sw-blue: #89b4fa; --sw-mauve: #cba6f7;
+}
+
+:root {
+  --hba-accent: #{$text-link-blue};
+  --hba-bg:     #{$white};
+  --hba-line:   #{$light};
+  --hba-text:   #{$black};
+  --hba-muted:  #6c6f85;
+
+  --sw-red: #d20f39;  --sw-peach: #fe640b; --sw-yellow: #df8e1d; --sw-green: #40a02b;
+  --sw-teal: #179299; --sw-sapphire: #209fb5; --sw-blue: #1e66f5; --sw-mauve: #8839ef;
+}
+
+html.dark { @include fork-dark-tokens; }
+@media (prefers-color-scheme: dark) {
+  html:not(.light) { @include fork-dark-tokens; }
+}
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $mono-family;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: var(--hba-accent);
+  color: var(--hba-bg);
+}
+
+// ── Framed shell ─────────────────────────────────────────────────────────────
+body {
+  padding: 2.5rem $frame-pad-x;
+}
+
+.frame {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid var(--hba-line);
+  background: var(--hba-bg);
+}
+
+// Children span the full frame; they supply their own horizontal padding so all
+// edges line up.
+.frame .navbar,
+.frame .wrapper,
+.frame .footer {
+  max-width: none;
+  margin: 0;
+}
+
+.frame .wrapper {
+  padding: 0 $frame-pad-x 1.75rem;
+}
+
+// Theme spaces the post/list header for a headerless layout; tighten it inside
+// the frame.
+.frame .header {
+  margin-top: 0.5rem;
+}
+
+.frame .author {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+// ── Masthead: brand left, swatch right ───────────────────────────────────────
+.navbar {
+  padding: 0;
+  border-bottom: 1px solid var(--hba-line);
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem 1rem;
+    padding: 0.75rem $frame-pad-x;
+    position: static;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    border-bottom: 0;
+    background-color: transparent;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .site-brand {
+    min-width: 0;
+    font-family: $mono-family;
+    font-weight: $bold-weight;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--hba-text);
+    text-decoration: none;
+
+    &:hover { color: var(--hba-accent); }
+  }
+}
+
+// ── Nav as `ls` output: directory-blue names, trailing slash, invert on hover ─
+.ls-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.5rem;
+  padding: 0.1rem $frame-pad-x 0.7rem;
+  border-bottom: 1px solid var(--hba-line);
+  font-family: $mono-family;
+  font-size: 0.9rem;
+}
+
+.ls-entry {
+  display: inline-block;
+}
+
+.ls-dir {
+  color: var(--sw-blue);
+  text-decoration: none;
+
+  &::after { content: "/"; color: var(--hba-muted); }
+
+  &:hover {
+    background: var(--hba-accent);
+    color: var(--hba-bg);
+    &::after { color: var(--hba-bg); }
+  }
+
+  &.active {
+    color: var(--hba-accent);
+    font-weight: $bold-weight;
+
+    &:hover { color: var(--hba-bg); }
+  }
+}
+
+.ls-file {
+  color: var(--hba-text);
+}
+
+// ── Swatch theme toggle ──────────────────────────────────────────────────────
+#mode {
+  margin-left: auto;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.85;
+  &:hover { opacity: 1; }
+
+  .colorbar {
+    display: inline-flex;
+    gap: 1px;
+    line-height: 0;
+  }
+  .colorbar > i {
+    display: block;
+    flex-shrink: 0;
+    width: 11px;
+    height: 7px;
+  }
+
+  .sw-red      { background: var(--sw-red); }
+  .sw-peach    { background: var(--sw-peach); }
+  .sw-yellow   { background: var(--sw-yellow); }
+  .sw-green    { background: var(--sw-green); }
+  .sw-teal     { background: var(--sw-teal); }
+  .sw-sapphire { background: var(--sw-sapphire); }
+  .sw-blue     { background: var(--sw-blue); }
+  .sw-mauve    { background: var(--sw-mauve); }
+}
+
+// ── Prompt lines ─────────────────────────────────────────────────────────────
+.frame .termline {
+  padding: 0.55rem $frame-pad-x 0.15rem;
+  font-family: $mono-family;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--hba-muted);
+  white-space: nowrap;
+  overflow-x: auto;
+
+  .tl-user { color: var(--sw-yellow); }
+  .tl-at,
+  .tl-path { color: var(--hba-muted); }
+  .tl-host { color: var(--sw-blue); }
+  .tl-cmd  { color: var(--sw-green); font-weight: $bold-weight; }
+  .tl-arg  { color: var(--hba-text); }
+}
+
+// Interior prompts (home transcript) live in the content column.
+.frame .wrapper .termline {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0.55rem;
+}
+
+// ── Post rows: terminal output without structural divider lines ─────────────
+.frame .post-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  column-gap: 0.55rem;
+  row-gap: 0.15rem;
+  align-items: baseline;
+  justify-content: normal;
+
+  &:not(:first-child) {
+    border-top: 0;
+  }
+
+  &::before {
+    content: ">";
+    grid-column: 1;
+    grid-row: 1;
+    color: var(--hba-accent);
+    font-family: $mono-family;
+    font-weight: $bold-weight;
+  }
+
+  .post-item-title {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    line-height: 1.3;
+  }
+
+  .post-item-meta {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    white-space: nowrap;
+    color: var(--hba-muted);
+    font-family: $mono-family;
+    font-size: 0.82rem;
+  }
+
+  .post-item-right {
+    display: inline-flex;
+    margin: 0;
+  }
+
+  .icon-star {
+    margin: 0;
+  }
+}
+
+// ── Footer colophon ──────────────────────────────────────────────────────────
+.frame .footer {
+  margin: 0;
+  padding: 0.85rem $frame-pad-x;
+  border-top: 1px solid var(--hba-line);
+  text-align: center;
+  font-family: $mono-family;
+
+  .footer_copyright {
+    margin: 0;
+    padding: 0;
+    font-size: 0.76rem;
+    color: var(--hba-muted);
+    opacity: 1;
+  }
+}
+
+// ── Table of contents ────────────────────────────────────────────────────────
+// details.toc matches the theme's `html.dark .toc` specificity so the fill override wins.
+.frame details.toc {
+  background-color: transparent;
+  border: 1px solid var(--hba-line);
+  padding: 0.6rem $frame-pad-x;
+
+  summary {
+    font-family: $mono-family;
+    color: var(--hba-text);
+  }
+}
+
+// ── Content links: accent, hairline underline, invert on hover ───────────────
+.page-content {
+  :is(p, li, blockquote, td) a {
+    color: var(--hba-accent);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--hba-accent) 40%, transparent);
+
+    &:hover, &:focus {
+      background: var(--hba-accent);
+      color: var(--hba-bg);
+      border-bottom-color: var(--hba-accent);
+    }
+
+    &:hover code, &:focus code { color: var(--hba-bg); }
+  }
+}
+
+// Override the upstream fixed mobile menu so the shell stays within `.frame`.
+@include media-query($on-mobile) {
+  body {
+    padding: 0.75rem;
+  }
+
+  .frame {
+    width: calc(100vw - 1.5rem);
+    max-width: calc(100vw - 1.5rem);
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .navbar .menu {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 0.7rem $frame-pad-x;
+  }
+
+  .navbar .site-brand {
+    overflow-wrap: normal;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+  }
+
+  .frame .post-item {
+    .post-item-title {
+      grid-column: 2 / -1;
+    }
+
+    .post-item-meta {
+      grid-column: 2 / -1;
+      grid-row: 2;
+      justify-self: start;
+    }
+  }
+}

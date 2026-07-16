@@ -3,9 +3,21 @@
     {{- partial "head.html" . -}}
     <body data-theme = "{{ .Site.Params.defaultColor }}" class="notransition">
         {{- partial "scriptsBodyStart.html" . -}}
-        {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- partial "footer.html" . -}}
+        <div class="frame">
+            {{- partial "header.html" . -}}
+            {{- partial "navls.html" . -}}
+            {{- $cmd := "cat" }}{{ $arg := "" }}{{ $ppath := "~" -}}
+            {{- if eq .Kind "section" -}}
+                {{- $cmd = "ls" }}{{ $ppath = printf "~/%s" .Section -}}
+            {{- else if eq .Kind "page" -}}
+                {{- $cmd = "cat" }}{{ $arg = printf "%s.md" (path.Base .RelPermalink) }}{{ $ppath = printf "~/%s" .Section -}}
+            {{- else -}}
+                {{- $cmd = "cat" }}{{ $arg = "404.md" -}}
+            {{- end -}}
+            {{- partial "promptline.html" (dict "ctx" . "cmd" $cmd "arg" $arg "path" $ppath) -}}
+            {{- block "main" . }}{{- end }}
+            {{- partial "footer.html" . -}}
+        </div>
         {{- partial "scriptsBodyEnd.html" . -}}
     </body>
 </html>

@@ -17,14 +17,6 @@ O Hugo vem com vários [Shortcodes Integrados](https://gohugo.io/content-managem
 
 ---
 
-## Shortcode Simples do Twitter
-
-{{< twitter_simple user="DesignReviewed" id="1085870671291310081" >}}
-
-<br>
-
----
-
 ## Shortcode Simples do Vimeo
 
 {{< vimeo_simple 48912912 >}}

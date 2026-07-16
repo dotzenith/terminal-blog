@@ -2,4 +2,5 @@
 .hvm
 exampleSite/public/
 exampleSite/resources/
+exampleSite/themes/
 exampleSite/.hugo_build.lock

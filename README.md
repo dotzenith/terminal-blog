@@ -38,7 +38,7 @@ The result shown above was last confirmed on September 23, 2023. You can check t
 
 Hugo Blog Awesome (HBA) is a theme crafted to capture your readers' attention.
 
-Additionally, it's fast, [privacy-conscious](https://themarkup.org/blacklight?url=hba.sid.one), and comes with no external dependencies. That's right. There are no Google fonts, icon packs, or JavaScript frameworks. No trackers or ads to bloat your website.
+Additionally, it's fast and has no external UI dependencies. There are no Google fonts, icon packs, or JavaScript frameworks to bloat your website.
 
 Its focus on minimalism and clean UI ensures that your content takes the spotlight. This, coupled with the support for dark mode, provides a stress-free (on the eyes) reading experience for your audience.
 
@@ -104,115 +104,6 @@ It is recommended that you copy the `hugo.toml` file from the `exampleSite` dire
 I used [realfavicongenerator.net](https://realfavicongenerator.net/) to generate the favicons. You can place the resulting files in the `assets\icons` folder. That should get your favicon working.
 
 If you want to customize anything further, you can modify `layouts\partials\head.html`.
-
-### Adding Social icons
-
-Social icons can be added by configuring `hugo.toml` file in the following manner.
-
-```toml
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/hugo-sid"
-
-[[params.socialIcons]]
-name = "twitter"
-url = "https://twitter.com"
-
-[[params.socialIcons]]
-name = "Rss"
-url = "/index.xml"
-```
-
-<details>
-  <summary>List of available icons (click to expand)</summary>
-
-| Name            | Platform                        |
-| --------------- | ------------------------------- |
-| `123rf`         | 123rf.com                       |
-| `adobestock`    | stock.adobe.com                 |
-| `applemusic`    | music.apple.com                 |
-| `behance`       | behance.net                     |
-| `bilibili`      | bilibili.com                    |
-| `bitcoin`       | -                               |
-| `bluesky`       | bsky.app                        |
-| `buymeacoffee`  | buymeacoffee.com                |
-| `codepen`       | codepen.io                      |
-| `cryptohack`    | cryptohack.org                  |
-| `ctftime`       | ctftime.org                     |
-| `cv`            | -                               |
-| `deezer`        | deezer.com                      |
-| `dev`           | dev.to                          |
-| `discogs`       | discogs.com                     |
-| `discord`       | discord.com                     |
-| `dreamstime`    | dreamstime.com                  |
-| `dribbble`      | dribbble.com                    |
-| `email`         | -                               |
-| `facebook`      | facebook.com                    |
-| `flickr`        | flickr.com                      |
-| `freepik`       | freepik.com                     |
-| `gitea`         | gitea.io                        |
-| `github`        | github.com                      |
-| `gitlab`        | gitlab.com                      |
-| `goodreads`     | goodreads.com                   |
-| `googlescholar` | scholar.google.com              |
-| `guruShots`     | gurushots.com                   |
-| `hackerone`     | hackerone.com                   |
-| `hackerrank`    | hackerrank.com                  |
-| `hackthebox`    | hackthebox.eu                   |
-| `instagram`     | instagram.com                   |
-| `itchio`        | itch.io                         |
-| `kaggle`        | -                               |
-| `kakaotalk`     | kakaocorp.com/service/KakaoTalk |
-| `key`           | -                               |
-| `keybase`       | keybase.io                      |
-| `kofi`          | ko-fi.com                       |
-| `komoot`        | -                               |
-| `lastfm`        | last.fm                         |
-| `letterboxd`    | -                               |
-| `liberapay`     | liberapay.com                   |
-| `linkedin`      | linkedin.com                    |
-| `mastodon`      | mastodon.social                 |
-| `matrix`        | matrix.org                      |
-| `medium`        | medium.com                      |
-| `monero`        | -                               |
-| `mixcloud`      | mixcloud.com                    |
-| `nuget`         | nuget.org                       |
-| `paypal`        | paypal.com                      |
-| `peertube`      | -                               |
-| `pgp`           | -                               |
-| `phone`         | -                               |
-| `ploywork`      | ploywork.com                    |
-| `qq`            | qq.com                          |
-| `reddit`        | reddit.com                      |
-| `researchgate`  | researchgate.net                |
-| `rss`           | -                               |
-| `serverfault`   | serverfault.com                 |
-| `soundcloud`    | soundcloud.com                  |
-| `shutterstock`  | shutterstock.com                |
-| `signal`        | signal.org                      |
-| `slack`         | slack.com                       |
-| `snapchat`      | snapchat.com/add                |
-| `spotify`       | spotify.com                     |
-| `stackoverflow` | stackoverflow.com               |
-| `stackshare`    | stackshare.io                   |
-| `steam`         | steampowered.com                |
-| `strava`        | strava.com                      |
-| `telegram`      | telegram.org                    |
-| `threads`       | threads.net                     |
-| `tiktok`        | tiktok.com                      |
-| `twitch`        | twitch.tv                       |
-| `twitter` (the blue bird logo)       | twitter.com                     |
-| `unsplash`      | unsplash.com                    |
-| `x` (formerly Twitter)             | x.com                           |
-| `xda`           | xda-developers.com              |
-| `xing`          | xing.com                        |
-| `ycombinator`   | ycombinator.com                 |
-| `youtube`       | youtube.com                     |
-| `other`         | -                               |
-
-</details>
-
-If you are trying to add an icon that is not listed above, you can modify `layouts\partials\svgs\svgs.html` to include your icon (SVG). You are encouraged to submit your icon by creating a pull request, so that others can benefit.
 
 ### Enable go to top button
 
@@ -287,8 +178,6 @@ Don't forget to ⭐️ the repo if you liked this theme!
 <a href='https://ko-fi.com/sidharth' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ## Credits
-
-The social icons are made possible thanks to [Aditya Telange](https://github.com/adityatelange)'s [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme.
 
 Thanks to [piharpi](https://harpi.me/) for creating the [Jekyll klise theme](https://github.com/piharpi/jekyll-klise). It served as an inspiration to create this Hugo theme.
 

@@ -4,14 +4,14 @@
     {{ $toc = .Params.toc }}
 {{- end -}}
 
-{{- if $toc -}}
-    {{ $tocOpen := "" }}
+{{- if and $toc .Fragments.Headings -}}
+    {{ $tocOpen := false }}
     {{ if or .Site.Params.tocOpen .Params.tocOpen }}
         {{ if not (eq .Params.tocOpen false) }}
-            {{ $tocOpen = "open" }}
+            {{ $tocOpen = true }}
         {{ end }}
     {{ end }}
-    <details class="toc" {{ $tocOpen }}>
+    <details class="toc"{{ if $tocOpen }} open{{ end }}>
         <summary><b>{{ T "single.table_of_contents" }}</b></summary>
         {{ .TableOfContents }}
     </details>

@@ -1,0 +1,7 @@
+{{- /* Renders one shell prompt line. Input: dict (ctx, cmd, arg, path). */ -}}
+{{- $host := (urls.Parse .ctx.Site.BaseURL).Host | default "localhost" -}}
+{{- $path := .path | default "~" -}}
+<div class="termline" aria-hidden="true">
+    <span class="tl-user">visitor</span><span class="tl-at">@</span><span class="tl-host">{{ $host }}</span><span class="tl-path">:{{ $path }}$</span>
+    <span class="tl-cmd">{{ .cmd }}</span>{{ with .arg }} <span class="tl-arg">{{ . }}</span>{{ end }}
+</div>

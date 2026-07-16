@@ -1,6 +1,6 @@
 //////////////// 1. Light Colors /////////////////
 $text-base-color: #4c4f69;
-$text-link-blue: #1e66f5;
+$text-link-blue: #fe640b;        // link / accent
 $text-link-blue-active: #7287fd;
 $bloquote-border: #8c8fa1;
 $blockquote-text: #5c5f77;
@@ -11,14 +11,14 @@ $go-top-bg: #bcc0cc97;
 $go-top-bg-hover: #bcc0cc;
 
 $black: #4c4f69;
-$light: #eff1f5;
+$light: #bcc0cc;                 // dividers
 $smoke: #ccd0da;
 $gray: #8c8fa1;
-$white: #eff1f5;
+$white: #eff1f5;                 // page background
 
 //////////////// 2. Dark Colors /////////////////
-$dark-text-base-color: #cdd6f4;
-$dark-text-link-blue: #89b4fa;
+$dark-text-base-color: #c6cad3;
+$dark-text-link-blue: #fab387;        // link / accent
 $dark-text-link-blue-active: #b4befe;
 $dark-bloquote-border: #7f849c;
 $dark-blockquote-text: #a6adc8;
@@ -28,15 +28,15 @@ $dark-toc-bg: #313244;
 $dark-go-top-bg: #45475ab3;
 $dark-go-top-bg-hover: #45475a;
 
-$dark-black: #1e1e2e;
+$dark-black: #0f0f14;           // page background
 $dark-white: #cdd6f4;
-$dark-light: #181825;
+$dark-light: #2b2b36;           // dividers
 $dark-smoke: #313244;
 $dark-gray: #9399b2;
 
 //////////////// 3. Fonts preferences /////////////////
-$sans-family: Roboto, sans-serif;
-$mono-family: Berkeley Mono, monospace;
+$sans-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+$mono-family: Berkeley Mono, ui-monospace, monospace;
 $base-font-size: 18px;
 $medium-font-size: $base-font-size * 0.938;
 $small-font-size: $base-font-size * 0.875;
@@ -76,7 +76,6 @@ $on-widescreen: 1152px;
 
 @import "fonts";
 @import "base";
-@import "navbar";
 @import "layout";
 @import "post";
 @import "code";
