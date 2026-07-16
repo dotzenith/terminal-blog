@@ -97,8 +97,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.en-gb.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Awesome hugo blog"
   name = "Sidharth R"
   description = "A fast, minimalistic Hugo theme with light and dark mode support, for running a personal site or blog."
@@ -161,8 +159,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.it.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Awesome hugo blog"
   name = "Sidharth R"
   description = "Un tema Hugo veloce e minimalista con supporto per la modalità chiara e scura, per la gestione di un sito o di un blog personale."
@@ -226,8 +222,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.ru-ru.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Превосходный hugo блог"
   name = "Sidharth R"
   description = "Быстрая, минималистичная тема для Hugo с поддержкой светлого и тёмного режима для использования на персональных сайтах и блогах."
@@ -289,8 +283,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.fr-fr.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Awesome hugo blog"
   name = "Sidharth R"
   description = "Un thème Hugo rapide et minimaliste avec un mode clair et sombre, pour un site personnel ou un blog."
@@ -354,8 +346,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.de-de.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Awesome hugo blog"
   name = "Sidharth R"
   description = "Ein schnelles, minimalistisches Hugo-Theme mit hellem und dunklem Modus, für eine persönliche Website oder Blog."
@@ -419,8 +409,6 @@ theme = "hugo-blog-awesome"
   # By default (or if nothing is specified), summary is used.
 
 [Languages.pt-br.params.author]
-  avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
-  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Awesome hugo blog"
   name = "Sidharth R"
   description = "Um tema Hugo veloz e minimalista com suporte a modo claro e escuro para rodar um blog ou site pessoal"
@@ -439,4 +427,3 @@ theme = "hugo-blog-awesome"
 # Allow to override `browserconfig.xml` params (configuration for windows embedded browsers)
 [params.browserconfig]
   TileColor = "#2d89ef" # default windows 10 blue tile color
-

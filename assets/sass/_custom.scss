@@ -131,7 +131,7 @@ body {
   display: inline-block;
 }
 
-.ls-dir {
+.ls-nav .ls-dir {
   color: var(--sw-blue);
   text-decoration: none;
 
@@ -198,8 +198,8 @@ body {
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--hba-muted);
-  white-space: nowrap;
-  overflow-x: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
 
   .tl-user { color: var(--sw-yellow); }
   .tl-at,
