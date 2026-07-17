@@ -1,14 +1,12 @@
 # Terminal Blog
 
-The personal Hugo theme used by [Danshu's Musings](https://blog.danshu.co/). It pairs a framed terminal interface with a deliberately small publishing surface.
+The personal Hugo theme used by [My Blog](https://blog.danshu.co/). Just a silly little terminal theme.
 
-## Features
+## Origin
 
-- Responsive terminal shell with light, dark, and OS-auto color modes
-- Home, About, post archive, article, and 404 layouts
-- Syntax highlighting and opt-in tables of contents
-- Full-text post RSS, canonical/Open Graph metadata, and JSON-LD
-- Optional Umami analytics and generated Open Graph images
+Terminal Blog is a hard fork of [Hugo Blog Awesome](https://github.com/hugo-sid/hugo-blog-awesome), originally created by Sidharth R. It has intentionally diverged into a smaller theme for a single personal blog and is not intended to track upstream changes.
+
+Both the original work and this derivative are distributed under the MIT license. The original copyright and complete license notice are retained in [LICENSE](LICENSE).
 
 ## Local development
 
