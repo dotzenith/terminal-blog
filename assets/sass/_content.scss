@@ -148,13 +148,14 @@ pre {
 pre {
   padding: 0.65rem 1rem;
   overflow-x: auto;
-  background: #11111b;
+  color: var(--code-text);
+  background: var(--code-background);
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
 pre code {
-  color: #cdd6f4;
+  color: inherit;
 }
 
 .toc {

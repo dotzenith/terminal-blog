@@ -98,6 +98,11 @@
   content: "/";
 }
 
+.ls-dir.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .ls-dir:hover,
 .ls-dir:focus-visible {
   color: var(--background);
@@ -107,11 +112,6 @@
 .ls-dir:hover::after,
 .ls-dir:focus-visible::after {
   color: var(--background);
-}
-
-.ls-dir.active {
-  color: var(--accent);
-  font-weight: 700;
 }
 
 .ls-file {
