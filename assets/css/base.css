@@ -13,11 +13,11 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  padding: 2.5rem $frame-padding;
+  padding: 2.5rem var(--frame-padding);
   overflow-x: hidden;
   color: var(--text);
   background: var(--background);
-  font: 400 18px/1.85 $sans-family;
+  font: 400 18px/1.85 var(--sans-family);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: color 75ms ease-in, background-color 75ms ease-in;
@@ -41,7 +41,7 @@ h5,
 h6 {
   margin: 1.6rem 0 0.4rem;
   color: var(--text);
-  font-family: $mono-family;
+  font-family: var(--mono-family);
   line-height: 1.25;
   letter-spacing: 0.01em;
 }

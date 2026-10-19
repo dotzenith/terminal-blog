@@ -1,4 +1,4 @@
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: 768px) {
   body {
     padding: 0.75rem;
     font-size: 17px;
@@ -12,7 +12,7 @@
   .menu {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    padding: 0.7rem $frame-padding;
+    padding: 0.7rem var(--frame-padding);
   }
 
   .site-brand {
@@ -31,8 +31,8 @@
   }
 
   .page-content pre {
-    margin-right: -$frame-padding;
-    margin-left: -$frame-padding;
+    margin-right: calc(-1 * var(--frame-padding));
+    margin-left: calc(-1 * var(--frame-padding));
   }
 
   #totop {

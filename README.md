@@ -10,8 +10,6 @@ Both the original work and this derivative are distributed under the MIT license
 
 ## Local development
 
-Hugo Extended is required for Sass compilation.
-
 ```sh
 cd exampleSite
 hugo server

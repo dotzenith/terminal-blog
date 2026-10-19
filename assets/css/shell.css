@@ -1,5 +1,5 @@
 .frame {
-  max-width: $frame-width;
+  max-width: var(--frame-width);
   margin: 0 auto;
   border: 1px solid var(--line);
   background: var(--background);
@@ -14,13 +14,13 @@
   align-items: center;
   gap: 1rem;
   min-width: 0;
-  padding: 0.75rem $frame-padding;
+  padding: 0.75rem var(--frame-padding);
 }
 
 .site-brand {
   min-width: 0;
   color: var(--text);
-  font-family: $mono-family;
+  font-family: var(--mono-family);
   font-weight: 700;
   letter-spacing: 0.22em;
   text-decoration: none;
@@ -64,10 +64,10 @@
 .sw-mauve { background: var(--sw-mauve); }
 
 .termline {
-  padding: 0.55rem $frame-padding 0.15rem;
+  padding: 0.55rem var(--frame-padding) 0.15rem;
   overflow-wrap: anywhere;
   color: var(--muted);
-  font: 0.95rem/1.5 $mono-family;
+  font: 0.95rem/1.5 var(--mono-family);
 }
 
 .tl-user { color: var(--sw-yellow); }
@@ -79,18 +79,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.1rem 0.5rem;
-  padding: 0.1rem $frame-padding 0.7rem;
+  padding: 0.1rem var(--frame-padding) 0.7rem;
   border-bottom: 1px solid var(--line);
-  font: 0.9rem $mono-family;
+  font: 0.9rem var(--mono-family);
 }
 
 .ls-entry {
   display: inline-block;
+  text-decoration: none;
 }
 
 .ls-dir {
   color: var(--sw-blue);
-  text-decoration: none;
 }
 
 .ls-dir::after {
@@ -98,13 +98,13 @@
   content: "/";
 }
 
-.ls-dir.active {
+.ls-entry.active {
   color: var(--accent);
   font-weight: 700;
 }
 
-.ls-dir:hover,
-.ls-dir:focus-visible {
+.ls-entry:hover,
+.ls-entry:focus-visible {
   color: var(--background);
   background: var(--accent);
 }
@@ -119,7 +119,7 @@
 }
 
 .wrapper {
-  padding: 0 $frame-padding 1.75rem;
+  padding: 0 var(--frame-padding) 1.75rem;
 }
 
 .wrapper .termline {
@@ -129,10 +129,10 @@
 }
 
 .footer {
-  padding: 0.85rem $frame-padding;
+  padding: 0.85rem var(--frame-padding);
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-family: $mono-family;
+  font-family: var(--mono-family);
   text-align: center;
 }
 
