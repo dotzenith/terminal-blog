@@ -2,7 +2,13 @@
 <nav class="ls-nav" aria-label="Main navigation">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
-    <a class="ls-entry ls-dir{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+    {{- $kind := "ls-dir" }}
+    {{- $name := .Name }}
+    {{- with .Page }}{{ if .IsPage }}
+    {{- $kind = "ls-file" }}
+    {{- $name = printf "%s.md" (path.Base (strings.TrimSuffix "/" .RelPermalink)) }}
+    {{- end }}{{ end }}
+    <a class="ls-entry {{ $kind }}{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL }}">{{ $name }}</a>
     {{ end }}
     <a class="ls-entry ls-file" href="{{ .Site.Home.RelPermalink }}">intro.md</a>
 </nav>
