@@ -21,6 +21,10 @@
     letter-spacing: 0.14em;
   }
 
+  .post-subtitle {
+    font-size: 1.05rem;
+  }
+
   .post-item-title {
     grid-column: 2 / -1;
   }

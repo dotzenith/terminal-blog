@@ -27,6 +27,14 @@
   font-size: 2rem;
 }
 
+.post-subtitle {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+  opacity: 0.9;
+}
+
 .post-meta,
 .post-item-meta {
   color: var(--muted);
